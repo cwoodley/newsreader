@@ -7,11 +7,18 @@
 }
 
 body {
+  background: #f3f3f3;
   font-family: 'Open Sans', sans-serif;
 }
 
 %headline {
   font-family: 'Francois One', sans-serif;
+}
+
+%focus {
+  color: $focus;
+  border: 0;
+  outline: 1px dotted $focus;
 }
 
 %MediaItem {

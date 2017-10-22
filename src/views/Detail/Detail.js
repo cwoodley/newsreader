@@ -5,7 +5,7 @@ import api from '../../utils/api';
 import ArticleTitle from '../../components/ArticleTitle/ArticleTitle';
 import DateTime from '../../components/DateTime/DateTime';
 
-import styles from './Detail.modules.scss';
+import styles from './Detail.module.scss';
 
 class Detail extends Component {
   constructor() {
@@ -90,9 +90,9 @@ class Detail extends Component {
           </ArticleTitle>
         </h1>
         <h2>
-          <DateTime date={this.props.date} />
+          <DateTime date={this.state.date} />
         </h2>
-        <div style={{fontSize: 12}}>
+        <div className={styles.Content}>
           {articleContent}
         </div>
       </div>

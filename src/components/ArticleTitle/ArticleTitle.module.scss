@@ -9,6 +9,14 @@
     color: #000;
     text-decoration: none;
 
+    &:hover {
+      color: $orange;
+    }
+
+    &:focus {
+      @extend %focus;
+    }
+
     @include media('>=laptop') {
       color: #fff;
     }

@@ -30,7 +30,7 @@ class ArticleListItem extends Component {
               </Link>
             </ArticleTitle>
           </h2>
-          <h3>
+          <h3 className={styles.Time}>
             <DateTime date={date} />
           </h3>
           

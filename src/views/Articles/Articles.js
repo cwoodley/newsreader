@@ -37,7 +37,7 @@ class Articles extends Component {
   getNewsArticles() {
     api.getArticles()
     .then((res) => {
-      this.setArticles(res);
+      this.setArticles(res.documents);
     }).catch((error) => {
         this.setState({
           error: 'Network request failed',

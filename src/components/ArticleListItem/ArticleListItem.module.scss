@@ -71,3 +71,9 @@
     color: #fff;
   }
 }
+
+.Time div {
+  @include media('>=laptop') {
+    color: #fff;
+  }
+}

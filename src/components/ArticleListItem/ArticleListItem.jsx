@@ -14,19 +14,24 @@ class ArticleListItem extends Component {
 
     return(
       <div className={styles.Container}>
-        <h4 className={styles.TopicTag}>{this.props.topic}</h4>
-        <h2 className={styles.Title}>
-          <Link 
-            to={'/article/' + this.props.articleId}
-          >
-            {this.props.headline}
-          </Link>
-        </h2>
-        <div className={styles.Time} title={formattedDate}>{dateFromNow}</div>
-        
-        <div className={styles.Teaser}>
-          {this.props.teaser}
-        </div> 
+        <div className={styles.MediaContainer}>
+          <img src={this.props.mainImage} className={styles.MediaItem} alt="" />
+        </div>
+        <div className={styles.ContentContainer}>
+          <h4 className={styles.TopicTag}>{this.props.topic}</h4>
+          <h2 className={styles.Title}>
+            <Link 
+              to={'/article/' + this.props.articleId}
+            >
+              {this.props.headline}
+            </Link>
+          </h2>
+          <div className={styles.Time} title={formattedDate}>{dateFromNow}</div>
+          
+          <div className={styles.Teaser}>
+            {this.props.teaser}
+          </div>
+        </div>
       </div>
     )
   }

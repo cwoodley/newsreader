@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import PropTypes from "prop-types";
 
-
 // utils
 import api from '../../utils/api';
 

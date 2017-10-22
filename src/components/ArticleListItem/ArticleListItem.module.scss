@@ -2,10 +2,63 @@
 
 .Container {
   border-bottom: 1px solid silver;
-  padding: 30px 0;
+  padding: 30px 10px;
+  margin: 0 30px;
+
+  @include media('>=laptop') {
+    border: 0;
+    position: relative;
+    width: 100%;
+  }
 
   a {
     display: block;
+  }
+}
+
+.MediaContainer {
+  display: none;
+
+  @include media('>=tablet') {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  @include media('>=laptop') {
+    border-bottom: 1px solid #fff;
+    display: block;
+    height: 100%;
+    margin-bottom: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  &:after {
+    @include media('>=laptop') {
+      content: '';
+      display: block;
+      background: transparentize(#000, 0.3);
+      height: 100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+}
+
+.MediaItem {
+  @extend %MediaItem;
+}
+
+.ContentContainer {
+  @include media('>=laptop') {
+    padding: 20px;
+    position: relative;
+    z-index: 3;
   }
 }
 
@@ -17,6 +70,10 @@
   a {
     color: #000;
     text-decoration: none;
+
+    @include media('>=laptop') {
+      color: #fff;
+    }
   }
 }
 
@@ -37,10 +94,20 @@
   display: inline-block;
   font-size: 12px;
   margin-bottom: 8px;
+
+
+  @include media('>=laptop') {
+    color: #fff;
+  }
 }
 
 .Teaser {
   font-size: 14px;
   line-height: 120%;
   color: #525558;
+
+
+  @include media('>=laptop') {
+    color: #fff;
+  }
 }

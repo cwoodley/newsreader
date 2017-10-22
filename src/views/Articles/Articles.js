@@ -59,11 +59,12 @@ class Articles extends Component {
 
     const articleList = articles.map((item) => {
       return (
-        <li key={"item_"+item.id}>
+        <li key={"item_"+item.id}  className={styles.ArticleItem}>
           <ArticleListItem 
             articleId={item.id}
             datePublished={item.publicationDate}
             headline={item.homepageHead} 
+            mainImage={item.mainImage.reference}
             permalink={item._self}
             teaser={item.homepageTeaser}
             topic={item.primaryTopic}
@@ -76,7 +77,7 @@ class Articles extends Component {
       <div>
         <div className={styles.PageWrapper}>
           <div className={styles.ContentWrapper}>
-            <ul>
+            <ul className={styles.ArticleList}>
               {articleList}
             </ul>
           </div>

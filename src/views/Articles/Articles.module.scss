@@ -1,5 +1,25 @@
+@import '../../styles/shared.scss';
 
 .PageWrapper {
   margin: 0 auto;
   width: 90%;
+}
+
+.ArticleList {
+  @include media('>=tablet') {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.ArticleItem {
+  @include media('>=tablet') {
+    display: flex;
+    flex: 0 1 50%;
+  }
+
+  @include media('>=wide') {
+    flex: 0 1 33.3%;
+  }
+
 }

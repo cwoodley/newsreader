@@ -1,7 +1,8 @@
 @import '../../styles/shared.scss';
 
 .Container {
-  margin: 10px 0;
+  border-bottom: 1px solid silver;
+  padding: 30px 0;
 
   a {
     display: block;
@@ -9,5 +10,37 @@
 }
 
 .Title {
+  @extend %headline;
+  font-size: 24px;
+  margin: 4px 0;
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+
+.TopicTag {
+  background: $babyBlue;
+  color: darken($babyBlue, 60%);
+  display: inline-block;  
+  font-size: 12px;
+  margin-bottom: 4px;
+  padding: 4px 9px;
+  border-radius: 20px;
+  text-transform: lowercase;
+}
+
+.Time {
+  border-bottom: 1px dotted $silver;
+  color: $silver;
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.Teaser {
   font-size: 14px;
+  line-height: 120%;
+  color: #525558;
 }

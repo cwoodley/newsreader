@@ -18,6 +18,13 @@ class App extends Component {
       networkError: false,
       isLoading: true
     }
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    console.log(e.target.getAttribute('href'));
   }
 
   setArticles(data){
@@ -31,7 +38,6 @@ class App extends Component {
     api.getArticles()
     .then((res) => {
       this.setArticles(res);
-      console.log(res);
     }).catch((error) => {
         this.setState({
           error: 'Network request failed',
@@ -51,23 +57,30 @@ class App extends Component {
     const loadingMessage = this.state.isLoading ? 'Loading!' : null;
     const articles = this.state.articles;
 
-    const articleList = articles.map(function(item, index) {
+    const articleList = articles.map((item) => {
       return (
         <li key={"item_"+item.id}>
           <ArticleListItem 
-            permalink={item._self}
+            datePublished={item.publicationDate}
             headline={item.homepageHead} 
+            handleClick={this.handleClick}
+            permalink={item._self}
             teaser={item.homepageTeaser}
+            topic={item.primaryTopic}
           />
         </li>
       )
     });
 
     return (
-      <div className={styles.PageWrapper}>
-        <ul>
-          {articleList}
-        </ul>
+      <div>
+        <div className={styles.PageWrapper}>
+          <div className={styles.ContentWrapper}>
+            <ul>
+              {articleList}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }

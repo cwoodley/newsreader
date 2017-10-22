@@ -2,24 +2,47 @@ import React, { Component } from 'react';
 
 import api from '../../utils/api';
 
+import ArticleTitle from '../../components/ArticleTitle/ArticleTitle';
+import DateTime from '../../components/DateTime/DateTime';
+
+import styles from './Detail.modules.scss';
+
 class Detail extends Component {
   constructor() {
     super();
 
     this.state = {
+      content: [],
+      date: '',
       title: '',
-      content: []
+      media: '',
     }
   }
 
-  setArticleData(data) {
-    this.setState({
-      title: data.items[2].text,
-      content: data.items[1].blocks,
-      media: data.assets[0].original.reference
+  findContent(data, content) {
+    let result = data.find((item) => {
+      return item.kind === content
     });
 
-    // console.log(data.items[2].text);
+    return result;
+  }
+
+  setArticleData(data) {
+    let items = data.items;
+    
+    // Data from server has content text in different parts 
+    // of the items array, let's find them!
+    let content = this.findContent(items, 'content');
+    
+    // Let's find the title
+    let title = this.findContent(items, 'heading');
+
+    this.setState({
+      content: content.blocks,
+      date: data.publicationDate,
+      media: data.assets[0].original.reference,
+      title: title.text,
+    });
   }
 
   getArticleData(article) {
@@ -58,10 +81,17 @@ class Detail extends Component {
     : null;
 
     return (
-      <div>
+      <div className={styles.PageContainer}>
         {image}
-
-        <h1 style={{marginBottom: 10}}>{this.state.title}</h1>
+        
+        <h1 className={styles.Title}>
+          <ArticleTitle>
+            {this.state.title}
+          </ArticleTitle>
+        </h1>
+        <h2>
+          <DateTime date={this.props.date} />
+        </h2>
         <div style={{fontSize: 12}}>
           {articleContent}
         </div>

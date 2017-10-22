@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import PropTypes from "prop-types";
 
-// utils
-import api from '../../utils/api';
-
 // views
 import Articles from '../Articles/Articles';
 import Detail from '../Detail/Detail';
-
-//styles
 
 class App extends Component {
   static contextTypes = {

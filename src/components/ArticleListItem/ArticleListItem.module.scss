@@ -62,50 +62,10 @@
   }
 }
 
-.Title {
-  @extend %headline;
-  font-size: 24px;
-  margin: 4px 0;
-
-  a {
-    color: #000;
-    text-decoration: none;
-
-    @include media('>=laptop') {
-      color: #fff;
-    }
-  }
-}
-
-.TopicTag {
-  background: $babyBlue;
-  color: darken($babyBlue, 60%);
-  display: inline-block;  
-  font-size: 12px;
-  margin-bottom: 4px;
-  padding: 4px 9px;
-  border-radius: 20px;
-  text-transform: lowercase;
-}
-
-.Time {
-  border-bottom: 1px dotted $silver;
-  color: $silver;
-  display: inline-block;
-  font-size: 12px;
-  margin-bottom: 8px;
-
-
-  @include media('>=laptop') {
-    color: #fff;
-  }
-}
-
 .Teaser {
   font-size: 14px;
   line-height: 120%;
   color: #525558;
-
 
   @include media('>=laptop') {
     color: #fff;

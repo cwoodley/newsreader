@@ -1,0 +1,9 @@
+@import '../../styles/shared.scss';
+
+.Time {
+  border-bottom: 1px dotted $silver;
+  color: $silver;
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 8px;
+}

@@ -1,0 +1,12 @@
+@import '../../styles/shared.scss';
+
+.TopicTag {
+  background: $babyBlue;
+  color: darken($babyBlue, 60%);
+  display: inline-block;  
+  font-size: 12px;
+  margin-bottom: 4px;
+  padding: 4px 9px;
+  border-radius: 20px;
+  text-transform: lowercase;
+}

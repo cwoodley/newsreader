@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {HashRouter as Router, Link, Route} from 'react-router-dom';
+
 import moment from 'moment';
 
 import styles from './ArticleListItem.module.scss';
@@ -14,9 +16,11 @@ class ArticleListItem extends Component {
       <div className={styles.Container}>
         <h4 className={styles.TopicTag}>{this.props.topic}</h4>
         <h2 className={styles.Title}>
-          <a onClick={this.props.handleClick} href={this.props.permalink}>
+          <Link 
+            to={'/article/' + this.props.articleId}
+          >
             {this.props.headline}
-          </a>
+          </Link>
         </h2>
         <div className={styles.Time} title={formattedDate}>{dateFromNow}</div>
         

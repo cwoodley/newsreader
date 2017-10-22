@@ -4,6 +4,7 @@ import api from '../../utils/api';
 
 import ArticleTitle from '../../components/ArticleTitle/ArticleTitle';
 import DateTime from '../../components/DateTime/DateTime';
+import Loading from '../../components/Loading/Loading';
 
 import styles from './Detail.module.scss';
 
@@ -15,6 +16,7 @@ class Detail extends Component {
       content: [],
       date: '',
       title: '',
+      isLoading: true,
       media: '',
     }
   }
@@ -42,6 +44,7 @@ class Detail extends Component {
       date: data.publicationDate,
       media: data.assets[0].original.reference,
       title: title.text,
+      isLoading: false,
     });
   }
 
@@ -49,7 +52,6 @@ class Detail extends Component {
     api.getArticleById(article)
     .then((res) => {
       this.setArticleData(res);
-      // console.log(res);
     }).catch((error) => {
         this.setState({
           error: 'Network request failed',
@@ -67,12 +69,19 @@ class Detail extends Component {
 
   render() {
     let content = this.state.content;
+    let date = this.state.date;
 
+    const displayDate = this.state.date ? <h2><DateTime date={this.state.date} /></h2> : null;
+    
     const articleContent = content.map((item, index) => {
       return (
         <p key={index} style={{marginBottom: 10}}>{item.text}</p>
       )
     });
+
+    const loadingStatus = this.state.isLoading ? 
+      <Loading />
+    : null;
 
     const image = this.state.media ? 
       <div className="media">
@@ -82,6 +91,8 @@ class Detail extends Component {
 
     return (
       <div className={styles.PageContainer}>
+        {loadingStatus}
+        
         {image}
         
         <h1 className={styles.Title}>
@@ -89,9 +100,7 @@ class Detail extends Component {
             {this.state.title}
           </ArticleTitle>
         </h1>
-        <h2>
-          <DateTime date={this.state.date} />
-        </h2>
+        {displayDate}
         <div className={styles.Content}>
           {articleContent}
         </div>

@@ -5,6 +5,7 @@ import api from '../../utils/api';
 
 //components
 import ArticleListItem from '../../components/ArticleListItem/ArticleListItem';
+import Loading from '../../components/Loading/Loading';
 
 //styles
 import styles from './Articles.module.scss';
@@ -54,7 +55,10 @@ class Articles extends Component {
   }
 
   render() {
-    const loadingMessage = this.state.isLoading ? 'Loading!' : null;
+    const loadingStatus = this.state.isLoading ? 
+      <Loading />
+    : null;
+
     const articles = this.state.articles;
 
     const articleList = articles.map((item) => {
@@ -77,6 +81,7 @@ class Articles extends Component {
       <div>
         <div className={styles.PageWrapper}>
           <div className={styles.ContentWrapper}>
+            {loadingStatus}
             <ul className={styles.ArticleList}>
               {articleList}
             </ul>
